@@ -1,0 +1,4 @@
+<h1>退会確認画面</h1>
+
+<h3>本当に退会しますか？</h3>
+<%= link_to '退会しない', users_mypage_path(current_user) %>　　<%= link_to '退会する', quit_path(current_user), method: :patch %>

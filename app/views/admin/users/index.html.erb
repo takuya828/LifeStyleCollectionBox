@@ -1,0 +1,7 @@
+<h3>会員一覧ページ</h3>
+<% @users.each do |user| %>
+<p>会員id　　<%= user.id %></p>
+<p>ハンドルネーム　　<%= user.handle_name %></p>
+<p>メールアドレス　　<%= user.email %></p>
+<p>会員ステータス　　<%= user.is_delete %></p><br><br>
+<% end %>

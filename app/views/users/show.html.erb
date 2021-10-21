@@ -1,0 +1,11 @@
+<%= flash[:danger] %>
+<%= flash[:success] %>
+
+<h3>マイページ　　　<%= link_to "編集する", edit_user_path(@user.id) %></h3>
+
+<h3>ハンドルネーム　<%= @user.handle_name %></h3>
+<h3>メールアドレス  <%= @user.email %></h3>
+<h3>作成日時  <%= @user.created_at %></h3>
+
+<p>投稿一覧</p><br>
+<p>いいね一覧</p>
