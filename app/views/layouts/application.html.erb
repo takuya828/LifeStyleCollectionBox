@@ -8,20 +8,39 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+ <header>
+   <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+        <ul class="navbar-nav my-3 mr-auto">
+          <li>
+            <div class="mx-1">
+         <%= link_to("LifeStyleCollectionBox", root_path, class: "btn btn-light") %>
+            </div>
+            </li>
+            </ul>
   <body>
     <% if user_signed_in? %>
-      <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      </li>
+    <div class="mx-3">
+         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+            </div>
     <% else %>
-      <li>
-        <%= link_to "新規登録", new_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "ログイン", new_user_session_path %>
-      </li>
+    <ul class="navbar-nav">
+          <li>
+           <div class="mx-3">
+            <%= link_to "新規登録", new_user_registration_path %>
+           </div>
+          </li>
+          <li>
+           <div class="mx-3">
+            <%= link_to "ログイン", new_user_session_path %>
+           </div>
+         </li>
+        </ul>
     <% end %>
+
+    </div>
+    </nav>
+    </header>
     <%= yield %>
   </body>
 </html>
