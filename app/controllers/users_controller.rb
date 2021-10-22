@@ -33,7 +33,7 @@ end
 
   private
   def user_params
-    params.require(:user).permit(:handle_name, :email, :is_delete)
+    params.require(:user).permit(:handle_name, :email, :is_delete, :image)
   end
 
 end

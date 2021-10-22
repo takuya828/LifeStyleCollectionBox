@@ -1,0 +1,9 @@
+<h3>投稿詳細ページ</h3>
+ <%= attachment_image_tag @post, :image, :fill, 200, 200 %>
+  <p>タイトル：<%= @post.title %></p>
+  <p>本文：<%= @post.body %></p>
+  <p>ハンドルネーム：<%= @post.user.handle_name %></p>
+  <p><%= attachment_image_tag @post.user, :image, :fill, 100, 100 %></p>
+  <p>投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
+  <p>いいね する</p>
+  <p>コメント する</p>

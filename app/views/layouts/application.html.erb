@@ -34,11 +34,6 @@
             </ul>
       <% elsif user_signed_in? %>
       <ul class="navbar-nav">
-          <li>
-        <div class="mx-3">
-         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-            </div>
-            </li>
             <li>
             <div class="mx-3">
              <%= link_to "マイページ", users_mypage_path %>
@@ -46,12 +41,17 @@
             </li>
             <li>
             <div class="mx-3">
-             <%= link_to "新規投稿", new_post_path %>
+            <%= link_to "CollectionBox", posts_path %>
             </div>
             </li>
             <li>
             <div class="mx-3">
-            <%= link_to "投稿一覧", posts_path %>
+             <%= link_to "新規投稿", new_post_path %>
+            </div>
+            </li>
+          <li>
+        <div class="mx-3">
+         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
             </div>
             </li>
     <% else %>

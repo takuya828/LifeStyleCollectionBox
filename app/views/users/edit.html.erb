@@ -1,5 +1,6 @@
 <h3>マイページ編集</h3>
 <%= form_with model:@user, url: users_mypage_path, local: true do |f| %>
+<p>プロフィール画像　　　　　　　　  <%= f.attachment_field :image %></p>
 <p>ハンドルネーム　　　　　　　　　　<%= f.text_field :handle_name %></p>
 <p>メールアドレス　　　　　　　　　　<%= f.text_field :email %></p>
 <%= f.submit '保存する', class:"btn btn-success" %>　　　　<%= link_to '退会する', users_check_path %>

@@ -3,9 +3,10 @@
 
 <h3>マイページ　　　<%= link_to "編集する", edit_user_path(@user.id) %></h3>
 
+<h3>プロフィール画像　<%= attachment_image_tag @user, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></h3>
 <h3>ハンドルネーム　<%= @user.handle_name %></h3>
 <h3>メールアドレス  <%= @user.email %></h3>
-<h3>作成日時  <%= @user.created_at %></h3>
+<h3>作成日時  <%= @user.created_at.strftime('%Y/%m/%d %H:%M') %></h3>
 
 <p>　　<%= link_to "投稿一覧", posts_path %></p><br>
 <p>いいね一覧</p>
