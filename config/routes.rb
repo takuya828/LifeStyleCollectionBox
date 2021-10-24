@@ -12,7 +12,13 @@ Rails.application.routes.draw do
 get '/users/check', to: 'users#check'
 patch '/users/:id/quit' => 'users#quit', as: 'quit'
 get '/' => 'homes#top', as: 'root'
-get '/about' => 'homes#about', as:'about'
+get '/about' => 'homes#about', as: 'about'
+
+resources :contacts, only: [:new, :create]
+post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'
+post 'contacts/back', to: 'contacts#back', as: 'back'
+get 'done', to: 'contacts#done', as: 'done'
+
 resources :posts, only: [:new, :show, :create, :index, :destroy] do
   resources :post_comments, only:[:create, :destroy]
   resources :favorites, only: [:create, :destroy]

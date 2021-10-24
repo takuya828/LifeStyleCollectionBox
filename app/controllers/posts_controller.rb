@@ -10,11 +10,11 @@ class PostsController < ApplicationController
     @post.save
     redirect_to posts_path
   end
-
+ 
   def index
-    @posts = current_user.posts
+    @posts = Post.all
   end
-  
+
   def show
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
