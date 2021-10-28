@@ -1,0 +1,30 @@
+<%= flash[:success] %>
+<div class="container">
+  <div class="mt-3 mx-3">
+  <h1>カテゴリー一覧・追加</h1>
+    <div class="row">
+      <div class="col">
+        <div class="mt-3">
+        <%= form_with model: [:admin, @category], local:true do |f| %> 　<p>カテゴリー名 <%= f.text_field :name %> <%= f.submit '新規登録' %>
+        <% end %> </p>
+        <table class="table table-borderless">
+          <thead>
+            <tr>
+              <th scope="col">カテゴリー</th>
+              <th scope="col">　　　</th>
+            </tr>
+          </thead>
+        <tbody>
+          <tr>
+            <% @categories.each do |category| %>
+            <th scope="row"><%= category.name %></th>
+            <td><%= link_to("編集する", edit_admin_category_path(@category, id: category), class: "btn btn-success") %></td>
+          </tr>
+            <% end %>
+        </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 <h3>新規投稿画面</h3>
 　<%= form_with model: @post, local:true do |f| %>
 　<h4>カテゴリー</h4>
+　<%= f.label :カテゴリー %>　　　　　　　<%= f.collection_select :category_id, Category.all, :id, :name, :prompt => "--選択してください--" %>
   <h4>画像</h4>
   <%= f.attachment_field :image %>
   <h4>タイトル</h4>

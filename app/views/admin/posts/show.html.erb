@@ -1,0 +1,20 @@
+<h3>管理者用投稿詳細ページ</h3>
+ <%= attachment_image_tag @post, :image, :fill, 300, 300 %>
+  <p>タイトル：<%= @post.title %></p>
+  <p>本文：<%= @post.body %></p>
+  <p><%= attachment_image_tag @post.user, :image, :fill, 100, 100 %>　　ハンドルネーム：<%= @post.user.handle_name %></p>
+  <p>投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
+
+<div>
+<p>コメント件数：<strong><%= @post.post_comments.count %></strong></p>
+<% @post.post_comments.each do |post_comment| %>
+  <p><%= post_comment.created_at.strftime('%Y/%m/%d %H:%M') %>
+     <%= attachment_image_tag post_comment.user, :image, :fill, 50, 50 %>
+     <%= post_comment.user.handle_name %></p>
+  <%= post_comment.comment %>
+  <% if post_comment.user == current_user %>
+  <div>
+    <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete %>
+  </div>
+  <% end %>
+  <% end %>

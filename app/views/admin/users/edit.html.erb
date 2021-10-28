@@ -2,7 +2,7 @@
 <%= @user.handle_name %>さんの会員情報編集</h1>
           <%= form_with model:@user, url: admin_user_path, local: true do |f| %>
             <p>会員ID 　　　　　<%= @user.id %></p>
-            <p>ハンドルネーム 　　　　　　<%= f.text_field :handle_name %></p>
+            <p>ハンドルネーム 　<%= f.text_field :handle_name %></p>
             <p>メールアドレス　 <%= f.text_field :email %></p>
             <p>会員ステータス 　<%= f.radio_button :is_delete, :Available, checked: false %>
             <%= f.label :is_delete, User.is_deletes %>

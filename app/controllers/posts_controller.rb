@@ -10,7 +10,7 @@ class PostsController < ApplicationController
     @post.save
     redirect_to posts_path
   end
- 
+
   def index
     @posts = Post.all
   end
@@ -23,7 +23,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :image, :body)
+    params.require(:post).permit(:title, :image, :body, :category_id)
   end
 
 end
