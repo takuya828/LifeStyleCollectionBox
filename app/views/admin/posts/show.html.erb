@@ -1,4 +1,5 @@
 <h3>管理者用投稿詳細ページ</h3>
+ <%= link_to link_to("Edit", edit_admin_post_path(@post.id), class: "btn btn-success") %><br>
  <%= attachment_image_tag @post, :image, :fill, 300, 300 %>
   <p>タイトル：<%= @post.title %></p>
   <p>本文：<%= @post.body %></p>

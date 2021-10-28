@@ -21,11 +21,6 @@
   <body>
       <% if admin_signed_in? %>
       <ul class="navbar-nav">
-          <li>
-            <div class="mx-3">
-                 <%= link_to("管理者ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-warning") %>
-            </div>
-          </li>
             <li>
             <div class="mx-3">
              <%= link_to "会員一覧", admin_users_path %>
@@ -39,6 +34,11 @@
             <li>
             <div class="mx-3">
              <%= link_to "投稿一覧", admin_posts_path %>
+            </div>
+            </li>
+            <li>
+            <div class="mx-3">
+                 <%= link_to("管理者ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-warning") %>
             </div>
             </li>
             </ul>

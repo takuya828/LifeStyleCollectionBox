@@ -2,7 +2,7 @@
 <% @posts.each do |post| %>
 <div>
    <%= attachment_image_tag post, :image, :fill, 100, 100 %>
-  <p>カテゴリー: </p>
+  <p>カテゴリー: <%= post.category.name %></p>
   <p>タイトル: <%= link_to post.title, admin_post_path(post) %></p>
   <p>ユーザーネーム：<%= post.user.handle_name %></p>
   <p>作成日時: <%= post.created_at.strftime('%Y/%m/%d') %></p>
