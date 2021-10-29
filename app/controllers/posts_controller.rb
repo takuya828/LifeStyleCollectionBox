@@ -19,6 +19,9 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
   end
+  
+  def ranking
+  end
 
   private
 

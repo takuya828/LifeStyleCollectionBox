@@ -44,6 +44,11 @@
             </ul>
       <% elsif user_signed_in? %>
       <ul class="navbar-nav">
+       <li>
+            <div class="mx-3">
+             <%= link_to "About", about_path %>
+            </div>
+            </li>
             <li>
             <div class="mx-3">
              <%= link_to "マイページ", users_mypage_path %>
@@ -52,6 +57,11 @@
             <li>
             <div class="mx-3">
             <%= link_to "CollectionBox", posts_path %>
+            </div>
+            </li>
+            <li>
+            <div class="mx-3">
+             <%= link_to "Ranking", ranking_posts_path %>
             </div>
             </li>
             <li>

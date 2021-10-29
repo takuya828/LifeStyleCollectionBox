@@ -19,10 +19,13 @@ post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'
 post 'contacts/back', to: 'contacts#back', as: 'back'
 get 'done', to: 'contacts#done', as: 'done'
 
-resources :posts, only: [:new, :show, :create, :index, :destroy] do
+resources :posts do
+  collection do
+  get '/ranking' => 'posts#ranking', as: 'ranking'
+  end
   resources :post_comments, only:[:create, :destroy]
   resources :favorites, only: [:create, :destroy]
-end
+ end
 resources :users, only: [:show, :edit, :update]
 get '/users/mypage', to: 'users#show'
 namespace :admin do
