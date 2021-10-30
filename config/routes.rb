@@ -24,7 +24,7 @@ resources :posts do
   get '/ranking' => 'posts#ranking', as: 'ranking'
   end
   resources :post_comments, only:[:create, :destroy]
-  resources :favorites, only: [:create, :destroy]
+  resource :favorites, only: [:create, :destroy]
  end
 resources :users, only: [:show, :edit, :update]
 get '/users/mypage', to: 'users#show'
