@@ -17,10 +17,17 @@ class PostsController < ApplicationController
   end
 
   def ranking
+    @q = Post.ransack(params[:q])
     @posts = Post.includes(:favorited_users).sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}
   end
 
   def search
+    @q = Post.ransack(params[:q])
+    selection = params[:keyword]
+    @posts = Post.sort(selection)
+  end
+
+  def rank
     @q = Post.ransack(params[:q])
     selection = params[:keyword]
     @posts = Post.sort(selection)

@@ -1,6 +1,6 @@
 class User < ApplicationRecord
 
-  enum is_delete: {Available: false, Invalid: true}
+  enum is_delete: { mukou: true, yuukou: false }
 
   def active_for_authentication?
         super && (self.is_delete === "Available")

@@ -4,10 +4,10 @@
             <p>会員ID 　　　　　<%= @user.id %></p>
             <p>ハンドルネーム 　<%= f.text_field :handle_name %></p>
             <p>メールアドレス　 <%= f.text_field :email %></p>
-            <p>会員ステータス 　<%= f.radio_button :is_delete, :Available, checked: false %>
-            <%= f.label :is_delete, User.is_deletes %>
-            <%= f.radio_button :is_delete, :Invalid %>
-            <%= f.label :is_delete, User.is_deletes %></p>
+            <p>会員ステータス 　<%= f.radio_button :is_delete, :yuukou, checked: true %>
+            <%= f.label :is_delete, User.is_deletes_i18n[:yuukou] %>
+            <%= f.radio_button :is_delete, :mukou %>
+            <%= f.label :is_delete, User.is_deletes_i18n[:mukou] %></p>
 
 　　　　　　　　<%= f.submit '変更を保存', class: "btn btn-success" %>
 　　　　　　　　<% end %>

@@ -1,5 +1,4 @@
-<h3>管理者用投稿詳細ページ</h3>
- <%= link_to link_to("Edit", edit_admin_post_path(@post.id), class: "btn btn-success") %><br>
+<h3>管理者用投稿詳細ページ　　　　<%= link_to link_to("編集", edit_admin_post_path(@post.id), class: "btn btn-success") %></h3>
  <%= attachment_image_tag @post, :image, :fill, 300, 300 %>
   <p>タイトル：<%= @post.title %></p>
   <p>本文：<%= @post.body %></p>
@@ -8,6 +7,7 @@
 
 <div>
 <p>コメント件数：<strong><%= @post.post_comments.count %></strong></p>
+<p>いいね数: <strong><%= @post.favorites.count %></strong></p>
 <% @post.post_comments.each do |post_comment| %>
   <p><%= post_comment.created_at.strftime('%Y/%m/%d %H:%M') %>
      <%= attachment_image_tag post_comment.user, :image, :fill, 50, 50 %>

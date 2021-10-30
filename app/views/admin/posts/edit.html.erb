@@ -10,6 +10,8 @@
   <p>本文：<%= @post.body %></p>
   <p><%= attachment_image_tag @post.user, :image, :fill, 100, 100 %>　　ハンドルネーム：<%= @post.user.handle_name %></p>
   <p>投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
+  <p>コメント件数：<strong><%= @post.post_comments.count %></strong></p>
+  <p>いいね数: <strong><%= @post.favorites.count %></strong></p>
   <%= link_to "Destroy", admin_post_path(@post), method: :delete, class: 'btn btn-danger', data: {confirm: "削除しますか？"}  %>
     </div>
   </div>

@@ -74,3 +74,5 @@ gem 'pry-rails'
 gem "dotenv-rails"
 
 gem 'ransack'
+
+gem "enum_help"

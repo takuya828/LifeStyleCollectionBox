@@ -1,23 +1,21 @@
-<h3>管理者用投稿一覧画面</h3>
-
-<%= search_form_for @q, url: admin_posts_path do |f| %>
-  <%= f.label :タイトル検索 %>
-  <%= f.search_field :title_cont %>
-
-　<%= f.label :category_id_eq, "カテゴリー" %>
+<%= search_form_for  @q, url: rank_posts_path do |f| %>
+<%= f.label :category_id_eq, "カテゴリー" %>
   <%= f.collection_select :category_id_eq, Category.all, :id, :name, include_blank:'指定なし' %>
 
   <%= f.submit "検索" %>
-<% end %>
+ <% end %>
 
-<% @posts.each do |post| %>
+<% @posts.each.with_index(1) do |post, i| %>
+
 <div>
+  第<%= i %>位
    <%= attachment_image_tag post, :image, :fill, 100, 100 %>
   <p>カテゴリー: <%= post.category.name %></p>
-  <p>タイトル: <%= link_to post.title, admin_post_path(post) %></p>
+  <p>タイトル: <%= link_to post.title, post_path(post) %></p>
   <p>ユーザーネーム：<%= post.user.handle_name %></p>
   <p>作成日時: <%= post.created_at.strftime('%Y/%m/%d') %></p>
-  <p><%= link_to "#{post.post_comments.count} コメント", admin_post_path(post) %></p>
+  <p><%= link_to "#{post.post_comments.count} コメント", post_path(post.id) %></p>
   <p>いいね数: <%= post.favorites.count %></p><br><br>
 </div>
+
 <% end %>

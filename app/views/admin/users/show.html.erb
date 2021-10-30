@@ -2,16 +2,15 @@
 <%= flash[:danger] %>
 <%= flash[:success] %>
 
-<h1><%= @user.handle_name %>さんの会員詳細</h1>
+<h3><%= @user.handle_name %>さんの会員詳細　　　<%= link_to "編集する", edit_admin_user_path(@user.id), class: "btn btn-success" %></h3>
             <p>プロフィール画像　　　 <%= attachment_image_tag @user, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></p>
             <p>会員ID 　　　　　　　　<%= @user.id %></p>
             <p>ハンドルネーム 　　　　<%= @user.handle_name %></p>
             <p>メールアドレス 　　　　<%= @user.email %></p>
-            <p>会員ステータス 　　　　<%= @user.is_delete %></p>
-            <p><%= link_to "編集する", edit_admin_user_path(@user.id), class: "btn btn-success" %></p>
+            <p>会員ステータス 　　　　<%= @user.is_delete_i18n %></p>
 
 <br><br>
-<h2>投稿一覧</h2>
+<h3>投稿一覧</h3>
 <% @posts.each do |post| %>
 <div>
    <%= attachment_image_tag post, :image, :fill, 100, 100 %>

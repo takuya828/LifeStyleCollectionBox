@@ -25,6 +25,7 @@ resources :posts do
   collection do
   get '/ranking' => 'posts#ranking', as: 'ranking'
   get '/search' => 'posts#search'
+  get '/rank' => 'posts#rank'
   end
   resources :post_comments, only:[:create, :destroy]
   resource :favorites, only: [:create, :destroy]

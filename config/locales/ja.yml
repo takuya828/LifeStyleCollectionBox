@@ -1,0 +1,6 @@
+ja:
+  enums:
+    user:
+      is_delete:
+        mukou: '無効'
+        yuukou: '有効'
