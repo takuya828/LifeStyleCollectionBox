@@ -28,7 +28,30 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @user = @post.user
     @post_comment = PostComment.new
+  end
+
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+       flash[:success] = "You have updated post successfully."
+       redirect_to post_path
+    else
+      @post = Post.find(params[:id])
+      flash[:danger] = "error"
+      redirect_to post_path
+    end
+  end
+
+  def destroy
+    post = Post.find(params[:id])
+    post.destroy
+    redirect_to posts_path
   end
 
   private

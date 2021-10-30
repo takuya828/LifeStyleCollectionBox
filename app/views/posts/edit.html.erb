@@ -1,0 +1,14 @@
+<h3>投稿編集</h3>
+<%= form_with model:@post, url: post_path, local: true do |f| %>
+<p>投稿画像　　　　　　　　  <%= attachment_image_tag(@post, :image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg") %><%= f.attachment_field :image %></p>
+<p>タイトル　　　　　　　　　　<%= f.text_field :title, size: 40 %></p>
+<p><%= f.label :カテゴリー %>　　　　　　　<%= f.collection_select :category_id, Category.all, :id, :name, :prompt => "--選択してください--" %></p>
+<p>本文　　　　　　　　　　<%= f.text_area :body, size: '50×5' %></p>
+
+
+<%= f.submit '保存する', class:"btn btn-success" %>
+
+<%= link_to "削除する", post_path(@post), method: :delete, class: 'btn btn-danger', data: {confirm: "削除しますか？"}  %>
+
+
+<% end %>
