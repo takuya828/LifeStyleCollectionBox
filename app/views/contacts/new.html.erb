@@ -1,7 +1,14 @@
+
+<H1>お問い合わせフォーム</H1>
 <%= form_for(@contact, url: confirm_path) do |f| %>
   <div class="form-group">
     <%= f.label :name, 'お名前*' %>
     <%= f.text_field :name, autofocus: true, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :name, '返信先メールアドレス*' %>
+    <%= f.text_field :email, autofocus: true, class: 'form-control' %>
   </div>
 
   <div class="form-group">

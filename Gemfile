@@ -72,3 +72,5 @@ gem "refile-mini_magick"
 gem 'pry-rails'
 
 gem "dotenv-rails"
+
+gem 'ransack'
