@@ -4,11 +4,13 @@ Rails.application.routes.draw do
   passwords:     'admins/passwords',
   registrations: 'admins/registrations'
 }
+
   devise_for :users, controllers: {
   sessions:      'users/sessions',
   passwords:     'users/passwords',
   registrations: 'users/registrations'
 }
+
 get '/users/check', to: 'users#check'
 patch '/users/:id/quit' => 'users#quit', as: 'quit'
 get '/' => 'homes#top', as: 'root'
@@ -22,11 +24,18 @@ get 'done', to: 'contacts#done', as: 'done'
 resources :posts do
   collection do
   get '/ranking' => 'posts#ranking', as: 'ranking'
+  get '/search' => 'posts#search'
   end
   resources :post_comments, only:[:create, :destroy]
   resource :favorites, only: [:create, :destroy]
  end
-resources :users, only: [:show, :edit, :update]
+
+resources :users do
+  member do
+    get :favorites
+  end
+end
+
 get '/users/mypage', to: 'users#show'
 namespace :admin do
      resources :users

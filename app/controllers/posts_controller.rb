@@ -15,17 +15,20 @@ class PostsController < ApplicationController
     @q = Post.ransack(params[:q])
     @posts = @q.result(distinct: true)
   end
-  
+
   def ranking
-     @posts = Post.includes(:liked_users).sort {|a,b| b.liked_users.size <=> a.liked_users.size}
+    @posts = Post.includes(:favorited_users).sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}
+  end
+
+  def search
+    @q = Post.ransack(params[:q])
+    selection = params[:keyword]
+    @posts = Post.sort(selection)
   end
 
   def show
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
-  end
-
-  def ranking
   end
 
   private

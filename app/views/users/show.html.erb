@@ -8,15 +8,14 @@
 <h3>メールアドレス  <%= @user.email %></h3>
 <h3>作成日時  <%= @user.created_at.strftime('%Y/%m/%d %H:%M') %></h3>
 
-<h3>投稿一覧</h3>
+<h4>-投稿一覧-</h4>
 <% @posts.each do |post| %>
 <div>
    <%= attachment_image_tag post, :image, :fill, 100, 100 %>
   <p>タイトル: <%= link_to post.title, post_path(post) %></p>
   <p>作成日時: <%= post.created_at.strftime('%Y/%m/%d') %></p>
   <p><%= link_to "#{post.post_comments.count} コメント", post_path(post.id) %></p>
-  <p>いいね数: <%= post.favorites.count %></p><br><br>
+  <p>いいね数: <%= post.favorites.count %></p><br>
 </div>
 <% end %>
-<br>
-<p>いいね一覧</p>
+<h4><%= link_to "いいねした投稿一覧", favorites_user_path(@user) %></h4>

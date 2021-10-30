@@ -1,0 +1,5 @@
+<p>いいねした投稿一覧</p>
+<% @favorites.each do |favorite| %>
+<%= link_to favorite.post.title, post_path(favorite.post) %><br>
+<%= favorite.created_at.strftime('%Y/%m/%d %H:%M') %><br><br>
+<% end %>

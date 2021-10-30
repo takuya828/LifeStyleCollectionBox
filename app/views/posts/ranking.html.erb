@@ -1,6 +1,7 @@
-<h1>ランキングページ</h1>
-<% @posts.each do |post| %>
+<% @posts.each.with_index(1) do |post, i| %>
+
 <div>
+  第<%= i %>位
    <%= attachment_image_tag post, :image, :fill, 100, 100 %>
   <p>カテゴリー: <%= post.category.name %></p>
   <p>タイトル: <%= link_to post.title, post_path(post) %></p>
@@ -9,4 +10,5 @@
   <p><%= link_to "#{post.post_comments.count} コメント", post_path(post.id) %></p>
   <p>いいね数: <%= post.favorites.count %></p><br><br>
 </div>
+
 <% end %>

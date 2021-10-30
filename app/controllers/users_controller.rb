@@ -31,6 +31,10 @@ def quit
   redirect_to root_path
 end
 
+def favorites
+    @favorites = Favorite.all
+end
+
 
   private
   def user_params
