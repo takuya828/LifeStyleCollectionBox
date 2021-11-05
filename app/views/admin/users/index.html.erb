@@ -19,7 +19,7 @@
             <td><%= link_to (user.handle_name), admin_user_path(user) %></td>
             <td><%= user.email %></td>
             <td><%= user.posts.count %></td>
-            <td><%= user.is_delete_i18n %></td>
+            <td><strong><%= user.is_delete_i18n %></strong></td>
     </tr>
     <% end %>
   </tbody>
