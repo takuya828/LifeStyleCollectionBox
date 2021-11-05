@@ -5,14 +5,17 @@
     </div>
     <div class="mx-5">
 
-  <%= attachment_image_tag @post, :image, :fill, 300, 300 %>
-  <p>タイトル：<%= @post.title %></p>
-  <p>本文：<%= @post.body %></p>
-  <p><%= attachment_image_tag @post.user, :image, :fill, 100, 100 %>　　ハンドルネーム：<%= @post.user.handle_name %></p>
-  <p>投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
-  <p>コメント件数：<strong><%= @post.post_comments.count %></strong></p>
-  <p>いいね数: <strong><%= @post.favorites.count %></strong></p>
-  <%= link_to "Destroy", admin_post_path(@post), method: :delete, class: 'btn btn-danger', data: {confirm: "削除しますか？"}  %>
+<%= form_with model:@post, url: admin_post_path, local: true do |f| %>
+<p>投稿画像　　<%= attachment_image_tag(@post, :image, :fill, 200, 200, format: 'jpeg', fallback: "no_image.jpg") %>　　　　　<%= f.attachment_field :image %></p>
+<p><%= f.label :カテゴリー %>　　　　　<%= f.collection_select :category_id, Category.all, :id, :name, :prompt => "--選択してください--" %></p>
+<p>タイトル　　　　　　<%= f.text_field :title, size: "40" %></p>
+<p>本文　　　　　　　　<%= f.text_area :body, size: "40" %></p>
+<p>投稿日時　　　　　　<%= @post.created_at.strftime('%Y/%m/%d %H:%M') %></p>
+<p>コメント件数　　　　<strong><%= @post.post_comments.count %></strong></p>
+<p>いいね数　　　　　　<strong><%= @post.favorites.count %></strong></p>
+<%= f.submit '変更を保存', class: "btn btn-success" %><br><br>
+<%= link_to "削除する", admin_post_path(@post), method: :delete, class: 'btn btn-danger', data: {confirm: "削除しますか？"}  %>
+<% end %>
     </div>
   </div>
 </main>

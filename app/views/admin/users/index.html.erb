@@ -1,8 +1,26 @@
 <h3>会員一覧ページ</h3>
-<% @users.each do |user| %>
-<p>会員id　　<%= user.id %></p>
-<p>作成日時　　<%= user.created_at.strftime('%Y/%m/%d %H:%M') %></p>
-<p>ハンドルネーム　　<%= link_to (user.handle_name), admin_user_path(user) %></p>
-<p>メールアドレス　　<%= user.email %></p>
-<p>会員ステータス　　<%= user.is_delete_i18n %></p><br><br>
-<% end %>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">会員id</th>
+      <th scope="col">作成日時</th>
+      <th scope="col">ハンドルネーム</th>
+      <th scope="col">メールアドレス</th>
+      <th scope="col">投稿数</th>
+      <th scope="col">会員ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <% @users.each do |user| %>
+            <th scope="row"><%= user.id %></th>
+            <td><%= user.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+            <td><%= link_to (user.handle_name), admin_user_path(user) %></td>
+            <td><%= user.email %></td>
+            <td><%= user.posts.count %></td>
+            <td><%= user.is_delete_i18n %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

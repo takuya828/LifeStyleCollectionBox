@@ -12,6 +12,7 @@
     <div class="mt-5">
       <div class="col">
         <p>タイトル　　　　　　　<strong><%= @post.title %></strong></p>
+        <p>カテゴリー　　　　　　<strong><%= @post.category.name %></strong></p>
         <p>本文　　　　　　　　　<strong><%= @post.body %></strong></p>
         <p>投稿者画像　　　　　　<%= attachment_image_tag @post.user, :image, :fill, 100, 100, fallback: "no_image.jpg" %></p>
         <p>投稿者名　　　　　　　<strong><%= @post.user.handle_name %></strong></p>
