@@ -3,7 +3,7 @@ class User < ApplicationRecord
   enum is_delete: { mukou: true, yuukou: false }
 
   def active_for_authentication?
-        super && (self.is_delete === "Available")
+        super && (self.is_delete === "yuukou")
   end
 
   has_many :posts, dependent: :destroy
