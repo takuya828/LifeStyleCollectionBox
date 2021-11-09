@@ -41,7 +41,9 @@ get '/users/mypage', to: 'users#show'
 namespace :admin do
      resources :users
      resources :categories
-     resources :posts
+     resources :posts do
+       resources :post_comments, only:[ :destroy]
+     end
   end
 
 end

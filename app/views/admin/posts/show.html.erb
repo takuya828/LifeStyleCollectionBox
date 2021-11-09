@@ -13,7 +13,7 @@
       <div class="col">
         <p>タイトル　　　　　　　<strong><%= @post.title %></strong></p>
         <p>カテゴリー　　　　　　<strong><%= @post.category.name %></strong></p>
-        <p>本文　　　　　　　　　<strong><%=safe_join(@post.body.split("\n"),tag(:br))%></strong></p>
+        <p><strong><%=safe_join(@post.body.split("\n"),tag(:br))%></strong></p>
         <p>投稿者画像　　　　　　<%= attachment_image_tag @post.user, :image, :fill, 100, 100, fallback: "no_image.jpg" %></p>
         <p>投稿者名　　　　　　　<strong><%= @post.user.handle_name %></strong></p>
         <p>投稿日時　　　　　　　<%= @post.created_at.strftime('%Y/%m/%d %H:%M') %></p>
@@ -24,11 +24,9 @@
      <%= attachment_image_tag post_comment.user, :image, :fill, 30, 30, fallback: "no_image.jpg" %><%= post_comment.created_at.strftime('%Y/%m/%d %H:%M') %>
      <%= post_comment.user.handle_name %></p>
   <%= post_comment.comment %>
-  <% if post_comment.user == current_user %>
   <div>
-    <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete %>
+    <%= link_to "削除", admin_post_post_comment_path(post_comment.post, post_comment), method: :delete %>
   </div>
-  <% end %>
   <% end %>
       </div>
     </div>
