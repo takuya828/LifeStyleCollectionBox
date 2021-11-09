@@ -1,21 +1,39 @@
-<%= search_form_for  @q, url: ranking_posts_path do |f| %>
+<div class="text-center">
+  <h1>-いいねランキング-</h1>
+<%= search_form_for  @q, url: rank_posts_path do |f| %>
 <%= f.label :category_id_eq, "カテゴリー" %>
   <%= f.collection_select :category_id_eq, Category.all, :id, :name, include_blank:'指定なし' %>
 
-  <%= f.submit "検索" %>
+　<%= f.submit "検索", class: "btn btn-primary" %>
  <% end %>
+ </div>
+ <br><br>
 
-<% @posts.each.with_index(1) do |post, i| %>
-
-<div>
-  第<%= i %>位
-   <%= attachment_image_tag post, :image, :fill, 100, 100 %>
-  <p>カテゴリー: <%= post.category.name %></p>
-  <p>タイトル: <%= link_to post.title, post_path(post) %></p>
-  <p>ユーザーネーム：<%= post.user.handle_name %></p>
-  <p>作成日時: <%= post.created_at.strftime('%Y/%m/%d') %></p>
-  <p><%= link_to "#{post.post_comments.count} コメント", post_path(post.id) %></p>
-  <p>いいね数: <%= post.favorites.count %></p><br><br>
-</div>
-
-<% end %>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">　　</th>
+      <th scope="col">いいね数</th>
+      <th scope="col">画像</th>
+      <th scope="col">タイトル</th>
+      <th scope="col">カテゴリー</th>
+      <th scope="col">投稿者名</th>
+      <th scope="col">コメント数</th>
+      <th scope="col">投稿日</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <% @posts.each.with_index(1) do |post, i| %>
+            <th scope="row">第<%= i %>位</th>
+            <td><h3><strong><%= post.favorites.count %></strong></h3></td>
+            <td><%= link_to (attachment_image_tag post, :image, :fill, 110, 110, fallback: "no_image_logo.png"), post_path(post) %></td>
+            <td><%= link_to post.title, post_path(post) %></td>
+            <td><%= post.category.name %></td>
+            <td><%= link_to post.user.handle_name, (post.user) %></td>
+            <td><%= link_to "#{post.post_comments.count} コメント", post_path(post.id) %></td>
+            <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

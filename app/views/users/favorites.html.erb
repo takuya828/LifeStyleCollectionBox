@@ -1,5 +1,25 @@
-<p>いいねした投稿一覧</p>
-<% @favorites.each do |favorite| %>
-<%= link_to favorite.post.title, post_path(favorite.post) %><br>
-<%= favorite.created_at.strftime('%Y/%m/%d %H:%M') %><br><br>
-<% end %>
+<div class="text-center">
+<h1>-いいねした投稿一覧-</h1>
+</div>
+
+<table class="table table-hover">
+
+      <th scope="col">画像</th>
+      <th scope="col">タイトル</th>
+      <th scope="col">カテゴリー</th>
+      <th scope="col">投稿者</th>
+      <th scope="col">いいねした日時</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <% @favorites.each do |favorite| %>
+            <td><%= link_to (attachment_image_tag favorite.post, :image, :fill, 110, 110, fallback: "no_image_logo.png"), post_path(favorite.post) %></td>
+            <td><%= link_to favorite.post.title, post_path(favorite.post) %></td>
+            <td><%= favorite.post.category.name %></td>
+            <td><%= link_to favorite.post.user.handle_name, (favorite.post.user) %></td>
+            <td><%= favorite.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

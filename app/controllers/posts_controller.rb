@@ -29,8 +29,7 @@ class PostsController < ApplicationController
 
   def rank
     @q = Post.ransack(params[:q])
-    selection = params[:keyword]
-    @posts = Post.sort(selection)
+    @posts = @q.result(distinct: true)
   end
 
   def show

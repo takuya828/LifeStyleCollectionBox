@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def show
-     @user = current_user
+     @user =  User.find(params[:id])
      @posts = current_user.posts
   end
 
@@ -32,7 +32,9 @@ def quit
 end
 
 def favorites
-    @favorites = Favorite.all
+  @q = Post.ransack(params[:q])
+  @user = User.find_by(id: params[:id])
+  @favorites = Favorite.where(user_id: @user.id).reverse_order
 end
 
 

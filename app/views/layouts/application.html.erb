@@ -51,7 +51,7 @@
             </li>
             <li>
             <div class="mx-3">
-             <%= link_to "マイページ", users_mypage_path, class: "btn btn-primary" %>
+             <%= link_to "マイページ", user_path(current_user), class: "btn btn-primary" %>
             </div>
             </li>
             <li>
@@ -61,7 +61,7 @@
             </li>
             <li>
             <div class="mx-3">
-             <%= link_to "ランキング", ranking_posts_path, class: "btn btn-success" %>
+             <%= link_to "いいねランキング", ranking_posts_path, class: "btn btn-success" %>
             </div>
             </li>
             <li>
