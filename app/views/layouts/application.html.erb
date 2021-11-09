@@ -46,64 +46,64 @@
       <ul class="navbar-nav">
        <li>
             <div class="mx-3">
-             <%= link_to "About", about_path %>
+             <%= link_to "使い方", about_path, class: "btn btn-primary" %>
             </div>
             </li>
             <li>
             <div class="mx-3">
-             <%= link_to "マイページ", users_mypage_path %>
+             <%= link_to "マイページ", users_mypage_path, class: "btn btn-primary" %>
             </div>
             </li>
             <li>
             <div class="mx-3">
-            <%= link_to "CollectionBox", posts_path %>
+            <%= link_to "CollectionBox", posts_path, class: "btn btn-success" %>
             </div>
             </li>
             <li>
             <div class="mx-3">
-             <%= link_to "Ranking", ranking_posts_path %>
+             <%= link_to "ランキング", ranking_posts_path, class: "btn btn-success" %>
             </div>
             </li>
             <li>
             <div class="mx-3">
-             <%= link_to "新規投稿", new_post_path %>
+             <%= link_to "新規投稿", new_post_path, class: "btn btn-success" %>
             </div>
             </li>
             <li>
             <div class="mx-3">
-             <%= link_to "問い合わせ", new_contact_path %>
+             <%= link_to "問い合わせ", new_contact_path, class: "btn btn-info" %>
             </div>
             </li>
           <li>
         <div class="mx-3">
-         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+         <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-secondary" %>
             </div>
             </li>
     <% else %>
     <ul class="navbar-nav">
           <li>
             <div class="mx-3">
-             <%= link_to "About", about_path %>
+             <%= link_to "About", about_path, class: "btn btn-outline-primary" %>
             </div>
             </li>
           <li>
            <div class="mx-3">
-            <%= link_to "新規登録", new_user_registration_path %>
+            <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-success" %>
            </div>
           </li>
           <li>
            <div class="mx-3">
-            <%= link_to "ログイン", new_user_session_path %>
+            <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-primary" %>
            </div>
          </li>
          <li>
            <div class="mx-3">
-            <%= link_to "管理者新規登録", new_admin_registration_path %>
+            <%= link_to "管理者新規登録", new_admin_registration_path, class: "btn btn-outline-primary" %>
            </div>
          </li>
           <li>
            <div class="mx-3">
-            <%= link_to "管理者ログイン", new_admin_session_path %>
+            <%= link_to "管理者ログイン", new_admin_session_path, class: "btn btn-outline-primary" %>
            </div>
          </li>
         </ul>

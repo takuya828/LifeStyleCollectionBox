@@ -27,7 +27,7 @@
     <tr>
       <% @posts.each do |post| %>
             <th scope="row"><%= post.id %></th>
-            <td><%= attachment_image_tag post, :image, :fill, 100, 100 %></td>
+            <td><%= attachment_image_tag post, :image, :fill, 100, 100, fallback: "no_image_logo.png" %></td>
             <td><%= link_to post.title, admin_post_path(post) %></td>
             <td><%= post.user.handle_name %></td>
             <td><%= post.favorites.count %></td>
