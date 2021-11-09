@@ -1,32 +1,46 @@
+<main>
+  <div class="container">
+    <div class="mt-3">
 <h3>投稿詳細ページ
 <% if @user.id == current_user.id %>
 <%= link_to("Edit", edit_post_path(@post.id), class: "btn btn-success") %>
 <% end %></h3>
- <%= attachment_image_tag @post, :image, :fill, 300, 300 %>
-  <p>タイトル：<%= @post.title %></p>
-  <p>カテゴリー： <%= @post.category.name %></p>
-  <p>本文：<%= @post.body %></p>
-  <p><%= attachment_image_tag @post.user, :image, :fill, 100, 100 %>　　ハンドルネーム：<%= @post.user.handle_name %></p>
-  <p>投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
+</div>
+ <div class="row">
+ <div class="mt-5 mx-3">
+ <div class="col">
+ <%= attachment_image_tag @post, :image, :fill, 300, 300, fallback: "no_image_logo.png" %>
+ </div>
+ </div>
+  <div class="mt-5">
+  <div class="col">
+  <p>カテゴリー　 <strong><%= @post.category.name %></strong></p>
+  <p>タイトル　　<strong><%= @post.title %></strong></p>
+  <p><%=safe_join(@post.body.split("\n"),tag(:br))%></p><br>
   <div id="favorite_buttons_<%= @post.id %>">
 　　　<%= render "favorites/favorites", post: @post %>
 　　</div>
-
+  <p>投稿日時　　<%= @post.created_at.strftime('%Y/%m/%d') %></p>
+  <p>投稿者<%= attachment_image_tag @post.user, :image, :fill, 50, 50, fallback: "no_image.jpg" %><%= @post.user.handle_name %></p>
 <div>
-<p>コメント件数：<strong><%= @post.post_comments.count %></strong></p>
+  <br>
+<h4><strong>-コメント-</strong></h4><br><p>コメント件数：<strong><%= @post.post_comments.count %></strong></p>
 <% @post.post_comments.each do |post_comment| %>
-  <p><%= post_comment.created_at.strftime('%Y/%m/%d %H:%M') %>
-     <%= attachment_image_tag post_comment.user, :image, :fill, 50, 50 %>
-     <%= post_comment.user.handle_name %></p>
-  <%= post_comment.comment %>
+<%= post_comment.comment %>　　<%= attachment_image_tag post_comment.user, :image, :fill, 50, 50, fallback: "no_image.jpg" %>
+     <%= post_comment.user.handle_name %>　<%= post_comment.created_at.strftime('%Y/%m/%d %H:%M') %><br>
   <% if post_comment.user == current_user %>
   <div>
     <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete %>
   </div>
   <% end %>
  <% end %>
- </div>
+ </div><br>
 <%= form_with(model:[@post, @post_comment], local: true) do |f| %>
   <%= f.text_area :comment, rows:'5',placeholder: "コメント入力" %>
   <%= f.submit "送信する" %>
 <% end %>
+</div>
+</div>
+</div>
+</div>
+</main>
