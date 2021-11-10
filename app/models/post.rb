@@ -1,5 +1,9 @@
 class Post < ApplicationRecord
 
+  validates :title, presence: true
+  validates :body, presence: true
+
+
   def self.sort(selection)
     case selection
     when 'new'
