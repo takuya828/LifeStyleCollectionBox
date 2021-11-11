@@ -1,5 +1,7 @@
 <div class="text-center">
   <h1>-CollectionBox-</h1>
+  <h3 class="text-success"><strong><%= flash[:success] %></strong></h3>
+  <h3 class="text-success"><strong><%= flash[:success2] %></strong></h3>
   <%= search_form_for @q do |f| %>
   <%= f.label :タイトル検索 %>　<%= f.search_field :title_cont, size: 40 %><br>
 　<%= f.label :category_id_eq, "カテゴリー" %> 　<%= f.collection_select :category_id_eq, Category.all, :id, :name, include_blank:'指定なし' %>

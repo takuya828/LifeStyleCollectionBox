@@ -8,9 +8,10 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
+      flash[:success] = "投稿完了！"
     redirect_to posts_path
     else
-    flash[:danger] = "タイトルまたは内容が空白です"
+    flash[:danger] = "ジャンル選択、タイトルまたは内容が空白です"
     render :new
     end
   end
@@ -49,18 +50,19 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
-       flash[:success] = "You have updated post successfully."
+       flash[:success] = "編集完了！"
        redirect_to post_path
     else
       @post = Post.find(params[:id])
-      flash[:danger] = "error"
-      redirect_to post_path
+      flash[:danger] = "タイトルまたは内容が空白です"
+      render :edit
     end
   end
 
   def destroy
     post = Post.find(params[:id])
     post.destroy
+    flash[:success2] = "削除完了！"
     redirect_to posts_path
   end
 

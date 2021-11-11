@@ -3,8 +3,13 @@ class PostCommentsController < ApplicationController
     post = Post.find(params[:post_id])
     comment = current_user.post_comments.new(post_comment_params)
     comment.post_id = post.id
-    comment.save
+    if comment.save
+      flash[:success3] = "コメント投稿完了！"
     redirect_to post_path(post)
+    else
+    flash[:danger] = "コメントが空白です"
+    redirect_to post_path(post)
+    end
   end
 
   def destroy

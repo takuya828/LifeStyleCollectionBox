@@ -5,6 +5,7 @@
 <% if @user.id == current_user.id %>
 <%= link_to("編集", edit_post_path(@post.id), class: "btn btn-success") %>
 <% end %></h3>
+<h3 class="text-success"><strong><%= flash[:success2] %></strong></h3>
 </div>
  <div class="row">
  <div class="mt-5 mx-3">
@@ -24,7 +25,10 @@
   <p>投稿者<%= attachment_image_tag @post.user, :image, :fill, 50, 50, fallback: "no_image.jpg" %><%= @post.user.handle_name %></p>
 <div>
   <br>
-<h4><strong>-コメント-</strong></h4><br><p>コメント件数：<strong><%= @post.post_comments.count %></strong></p>
+<h4><strong>-コメント-</strong></h4>
+<h3 class="text-danger"><strong><%= flash[:danger] %></strong></h3>
+<h3 class="text-success"><strong><%= flash[:success3] %></strong></h3>
+<br><p>コメント件数：<strong><%= @post.post_comments.count %></strong></p>
 <% @post.post_comments.each do |post_comment| %>
 <%= post_comment.comment %>　　<%= attachment_image_tag post_comment.user, :image, :fill, 50, 50, fallback: "no_image.jpg" %>
      <%= post_comment.user.handle_name %>　<%= post_comment.created_at.strftime('%Y/%m/%d %H:%M') %><br>
