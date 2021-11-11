@@ -1,4 +1,6 @@
 class Admin::CategoriesController < ApplicationController
+  before_action :authenticate_admin!
+
   def new
     @category = Category.new
   end
@@ -33,5 +35,5 @@ class Admin::CategoriesController < ApplicationController
   def category_params
     params.require(:category).permit(:name)
   end
-  
+
 end

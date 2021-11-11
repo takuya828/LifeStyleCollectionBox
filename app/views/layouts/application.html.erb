@@ -96,6 +96,11 @@
             <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-primary" %>
            </div>
          </li>
+         <li>
+            <div class="mx-3">
+             <%= link_to "問い合わせ", new_contact_path, class: "btn btn-outline-info" %>
+            </div>
+            </li>
           <li>
            <div class="mx-3">
             <%= link_to "管理者ログイン", new_admin_session_path, class: "btn btn-outline-primary" %>
@@ -109,4 +114,12 @@
     </header>
     <%= yield %>
   </body>
+
+  <footer>
+   <div class="my-5">
+         <div class="text-center">
+          <p>-LifeStyleCollectionBox-</p>
+         </div>
+         </div>
+      </footer>
 </html>
