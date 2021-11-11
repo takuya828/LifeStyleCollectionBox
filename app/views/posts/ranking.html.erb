@@ -24,10 +24,25 @@
   </thead>
   <tbody>
     <tr>
-      <% @posts.each.with_index(1) do |post, i| %>
-            <th scope="row">第<%= i %>位</th>
+      <% last_favorite = 0 %>
+        <% j = 1 %>
+        <% @posts.each.with_index(1) do |post, i| %>
+       <th scope="row">
+         <% if i == 1 %>
+            <% last_favorite = post.favorites.count %>
+          <% end %>
+          <% if post.favorites.count != last_favorite %>
+            <% j = i %>
+            第<%= j %>位
             <td><h3><strong><%= post.favorites.count %></strong></h3></td>
-            <td><%= link_to (attachment_image_tag post, :image, :fill, 110, 110, fallback: "no_image_logo.png"), post_path(post) %></td>
+            <% last_favorite = post.favorites.count %>
+          <% else %>
+            <% last_favorite = post.favorites.count %>
+            第<%= j %>位
+            <td><h3><strong><%= post.favorites.count %></strong></h3></td>
+          <% end %>
+        </th>
+         <td><%= link_to (attachment_image_tag post, :image, :fill, 110, 110, fallback: "no_image_logo.png"), post_path(post) %></td>
             <td><%= link_to post.title, post_path(post) %></td>
             <td><%= post.category.name %></td>
             <td><%= link_to post.user.handle_name, (post.user) %></td>
@@ -35,5 +50,5 @@
             <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
     </tr>
     <% end %>
-  </tbody>
-</table>
+    </tbody>
+    </table>
