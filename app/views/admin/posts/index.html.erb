@@ -29,9 +29,9 @@
     <tr>
       <% @posts.each do |post| %>
             <th scope="row"><%= post.id %></th>
-            <td><%= attachment_image_tag post, :image, :fill, 100, 100, fallback: "no_image_logo.png" %></td>
+            <td><%= link_to (attachment_image_tag post, :image, :fill, 100, 100, fallback: "no_image_logo.png"), admin_post_path(post) %></td>
             <td><%= link_to post.title, admin_post_path(post) %></td>
-            <td><%= post.user.handle_name %></td>
+            <td><%= link_to post.user.handle_name, admin_user_path(post.user) %></td>
             <td><%= post.favorites.count %></td>
             <td><%= post.post_comments.count %></td>
             <td><%= post.created_at.strftime('%Y/%m/%d %H:%M') %></td>

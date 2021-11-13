@@ -37,7 +37,6 @@ resources :users do
   end
 end
 
-get '/users/mypage', to: 'users#show'
 namespace :admin do
      resources :users
      resources :categories

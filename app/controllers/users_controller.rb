@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   def show
      @user =  User.find(params[:id])
      @posts = current_user.posts
-     @posts = @posts.page(params[:page]).per(4).reverse_order
+     @posts = @posts.page(params[:page]).per(8).reverse_order
   end
 
   def edit
@@ -16,10 +16,10 @@ def update
     @user = current_user
     if @user.update(user_params)
       flash[:success] = "変更完了致しました。"
-    redirect_to users_mypage_path(@user.id)
+    redirect_to user_path(@user.id)
     else
-       flash[:danger] = "変更完了できてません。"
-       redirect_to users_mypage_path(@user.id)
+       flash[:danger] = "ハンドルネーム もしくはメールアドレスが入力されてません"
+       redirect_to edit_user_path(@user.id)
     end
 end
 

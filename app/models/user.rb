@@ -1,5 +1,8 @@
 class User < ApplicationRecord
 
+  validates :handle_name, presence: true
+  validates :email, presence: true
+
   enum is_delete: { mukou: true, yuukou: false }
 
   def active_for_authentication?
