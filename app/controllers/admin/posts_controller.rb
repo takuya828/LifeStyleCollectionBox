@@ -15,12 +15,12 @@ class Admin::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
-      flash[:success] = "You have updated item successfully."
+      flash[:success] = "変更完了致しました。"
       redirect_to admin_post_path
     else
       @post = Post.find(params[:id])
-      flash[:danger] = "error"
-      redirect_to admin_post_path
+      flash[:danger] = "タイトルまたは内容が空白です。"
+      redirect_to edit_admin_post_path(@post)
     end
   end
 

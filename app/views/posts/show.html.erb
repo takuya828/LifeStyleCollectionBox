@@ -16,14 +16,15 @@
   <div class="mt-5">
   <div class="col">
   <p>カテゴリー　 <strong><%= @post.category.name %></strong></p>
-  <p>タイトル　　<strong><%= @post.title %></strong></p>
-  <p><%=safe_join(@post.body.split("\n"),tag(:br))%></p><br>
+  <p>タイトル　　<strong><%= @post.title %></strong></p><br>
+  <font size="4"><p><%=safe_join(@post.body.split("\n"),tag(:br))%></p></font><br>
   <div id="favorite_buttons_<%= @post.id %>">
 　　　<%= render "favorites/favorites", post: @post %>
 　　</div>
   <p>投稿日時　　<%= @post.created_at.strftime('%Y/%m/%d') %></p>
   <p>投稿者<%= attachment_image_tag @post.user, :image, :fill, 50, 50, fallback: "no_image.jpg" %><%= @post.user.handle_name %></p>
 <div>
+  </div>
   <br>
 <h4><strong>-コメント-</strong></h4>
 <h3 class="text-danger"><strong><%= flash[:danger] %></strong></h3>
@@ -43,7 +44,6 @@
   <%= f.text_area :comment, rows:'5',placeholder: "コメント入力" %>
   <%= f.submit "送信する" %>
 <% end %>
-</div>
 </div>
 </div>
 </div>

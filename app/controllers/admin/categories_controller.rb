@@ -24,9 +24,10 @@ class Admin::CategoriesController < ApplicationController
   def update
     @category = Category.find(params[:id])
     if @category.update(category_params)
-      flash[:success] = "ジャンル名変更されました。"
+      flash[:success] = "カテゴリー名が変更されました。"
       redirect_to admin_categories_path
     else
+      flash[:danger] = "カテゴリー名が空白です。"
       render 'edit'
     end
   end

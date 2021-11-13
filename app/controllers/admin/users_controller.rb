@@ -3,7 +3,7 @@ class Admin::UsersController < ApplicationController
 
   def index
     @q = User.ransack(params[:q])
-    @users = @q.result(distinct: true).page(params[:page]).per(20)
+    @users = @q.result(distinct: true).page(params[:page]).per(20).reverse_order
   end
 
   def show
@@ -18,14 +18,14 @@ class Admin::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:success] = "You have updated info successfully."
+      flash[:success] = "編集完了致しました。"
       redirect_to admin_user_path(@user.id)
     elsif @user.update(is_delete: true)
-      flash[:success] = "You have updated status successfully."
+      flash[:success] = "会員ステータス変更完了致しました。"
       redirect_to admin_user_path(@user.id)
     else
-      flash[:danger] = "error"
-      redirect_to admin_user_path(@user.id)
+      flash[:danger] = "完了できていません"
+      redirect_to edit_admin_user_path(@user.id)
     end
   end
 

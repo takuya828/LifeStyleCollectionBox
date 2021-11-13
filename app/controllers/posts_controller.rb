@@ -37,7 +37,7 @@ class PostsController < ApplicationController
 
   def rank
     @q = Post.ransack(params[:q])
-    @posts = @q.result(distinct: true)
+    @posts = @q.result(distinct: true).limit(20).includes(:favorited_users).sort { |a, b| b.favorited_users.size <=> a.favorited_users.size }
   end
 
   def show
