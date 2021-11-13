@@ -5,7 +5,6 @@ ja:
         mukou: '無効'
         yuukou: '有効'
 
-ja:
   views:
     pagination:
       first: "&laquo; 最初"

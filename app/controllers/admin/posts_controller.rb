@@ -3,7 +3,8 @@ class Admin::PostsController < ApplicationController
 
   def index
      @q = Post.ransack(params[:q])
-     @posts = @q.result(distinct: true)
+     @posts = @q.result(distinct: true).reverse_order
+     @posts = @posts.page(params[:page]).per(10)
   end
 
   def show
