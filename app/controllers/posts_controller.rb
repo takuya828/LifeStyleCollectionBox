@@ -6,13 +6,14 @@ before_action :authenticate_user!
   end
 
   def create
+    @user = current_user
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      flash[:success] = "投稿完了！"
-    redirect_to posts_path
+      flash[:success] = "投稿完了致しました。"
+    redirect_to user_path(@user)
     else
-    flash[:danger] = "ジャンル選択、タイトルまたは内容が空白です"
+    flash[:danger] = "ジャンル選択、タイトルまたは内容が空白です。"
     render :new
     end
   end
@@ -52,20 +53,21 @@ before_action :authenticate_user!
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
-       flash[:success] = "編集完了！"
+       flash[:success] = "編集完了致しました。"
        redirect_to post_path
     else
       @post = Post.find(params[:id])
-      flash[:danger] = "タイトルまたは内容が空白です"
+      flash[:danger] = "タイトルまたは内容が空白です。"
       render :edit
     end
   end
 
   def destroy
+    @user = current_user
     post = Post.find(params[:id])
     post.destroy
-    flash[:success2] = "削除完了！"
-    redirect_to posts_path
+    flash[:success2] = "削除完了致しました。"
+    redirect_to user_path(@user)
   end
 
   private

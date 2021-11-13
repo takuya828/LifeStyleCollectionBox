@@ -18,7 +18,7 @@ def update
       flash[:success] = "変更完了致しました。"
     redirect_to user_path(@user.id)
     else
-       flash[:danger] = "ハンドルネーム もしくはメールアドレスが入力されてません"
+       flash[:danger] = "ハンドルネーム もしくはメールアドレスが空白です。"
        redirect_to edit_user_path(@user.id)
     end
 end
