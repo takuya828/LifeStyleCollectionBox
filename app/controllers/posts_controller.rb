@@ -20,6 +20,7 @@ before_action :authenticate_user!
   def index
     @q = Post.ransack(params[:q])
     @posts = @q.result(distinct: true).reverse_order
+    @posts = @posts.page(params[:page])
   end
 
   def ranking

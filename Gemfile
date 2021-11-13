@@ -76,3 +76,5 @@ gem "dotenv-rails"
 gem 'ransack'
 
 gem "enum_help"
+
+gem 'kaminari','~> 1.2.1'
