@@ -42,3 +42,4 @@ https://docs.google.com/spreadsheets/d/1wKLsMrUm4iXlfiHXPMxDJcDK6FwmA0GpN8cdI8zN
 
 ## 使用素材
 -　いらすとや https://www.irasutoya.com/ 使い方のページで使用
+-　Font Awesome https://fontawesome.com/ いいねアイコンで使用
