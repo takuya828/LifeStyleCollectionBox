@@ -2,9 +2,9 @@ class Admin::PostsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-     @q = Post.ransack(params[:q])
-     @posts = @q.result(distinct: true).reverse_order
-     @posts = @posts.page(params[:page]).per(10)
+    @q = Post.ransack(params[:q])
+    @posts = @q.result(distinct: true).reverse_order
+    @posts = @posts.page(params[:page]).per(10)
   end
 
   def show
@@ -15,8 +15,8 @@ class Admin::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
-       flash[:success] = "You have updated item successfully."
-       redirect_to admin_post_path
+      flash[:success] = "You have updated item successfully."
+      redirect_to admin_post_path
     else
       @post = Post.find(params[:id])
       flash[:danger] = "error"
@@ -25,9 +25,8 @@ class Admin::PostsController < ApplicationController
   end
 
   def edit
-   @post = Post.find(params[:id])
+    @post = Post.find(params[:id])
   end
-
 
   def destroy
     post = Post.find(params[:id])
@@ -36,8 +35,8 @@ class Admin::PostsController < ApplicationController
   end
 
   private
+
   def post_params
     params.require(:post).permit(:id, :title, :body, :image, :category_id)
   end
-
 end

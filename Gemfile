@@ -77,4 +77,8 @@ gem 'ransack'
 
 gem "enum_help"
 
-gem 'kaminari','~> 1.2.1'
+gem 'kaminari', '~> 1.2.1'
+
+group :development, :test do
+  gem 'rubocop-airbnb'
+end

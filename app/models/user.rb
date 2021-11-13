@@ -1,12 +1,11 @@
 class User < ApplicationRecord
-
   validates :handle_name, presence: true
   validates :email, presence: true
 
   enum is_delete: { mukou: true, yuukou: false }
 
   def active_for_authentication?
-        super && (self.is_delete === "yuukou")
+    super && (is_delete === "yuukou")
   end
 
   has_many :posts, dependent: :destroy

@@ -6,10 +6,9 @@ class Admin::PostCommentsController < ApplicationController
     redirect_to admin_post_path(params[:post_id])
   end
 
-    private
+  private
 
   def post_comment_params
     params.require(:post_comment).permit(:comment)
   end
-
 end

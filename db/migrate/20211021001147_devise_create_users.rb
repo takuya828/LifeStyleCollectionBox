@@ -36,7 +36,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :image_id
       t.boolean :is_active
 
-
       t.timestamps null: false
     end
 

@@ -6,8 +6,8 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def index
-     @category = Category.new
-     @categories = Category.all
+    @category = Category.new
+    @categories = Category.all
   end
 
   def create
@@ -24,16 +24,16 @@ class Admin::CategoriesController < ApplicationController
   def update
     @category = Category.find(params[:id])
     if @category.update(category_params)
-       flash[:success] = "ジャンル名変更されました。"
-       redirect_to admin_categories_path
+      flash[:success] = "ジャンル名変更されました。"
+      redirect_to admin_categories_path
     else
-       render 'edit'
+      render 'edit'
     end
   end
 
-   private
+  private
+
   def category_params
     params.require(:category).permit(:name)
   end
-
 end
