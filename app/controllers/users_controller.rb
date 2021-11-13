@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   def show
      @user =  User.find(params[:id])
      @posts = current_user.posts
+     @posts = @posts.page(params[:page]).per(4).reverse_order
   end
 
   def edit
@@ -38,6 +39,7 @@ def favorites
   @q = Post.ransack(params[:q])
   @user = User.find_by(id: params[:id])
   @favorites = Favorite.where(user_id: @user.id).reverse_order
+  @favorites = @favorites.page(params[:page]).per(10)
 end
 
 

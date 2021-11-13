@@ -20,12 +20,12 @@ before_action :authenticate_user!
   def index
     @q = Post.ransack(params[:q])
     @posts = @q.result(distinct: true).reverse_order
-    @posts = @posts.page(params[:page])
+    @posts = @posts.page(params[:page]).per(5)
   end
 
   def ranking
     @q = Post.ransack(params[:q])
-    @posts = Post.includes(:favorited_users).sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}
+    @posts = Post.limit(20).includes(:favorited_users).sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}
   end
 
   def search
