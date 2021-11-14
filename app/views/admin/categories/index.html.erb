@@ -18,7 +18,7 @@
           <tr>
             <% @categories.each do |category| %>
             <th scope="row"><%= category.name %></th>
-            <td><%= link_to("編集する", edit_admin_category_path(@category, id: category), class: "btn btn-success") %></td>
+            <td><%= link_to("編集する", edit_admin_category_path(@category, id: category), class: "btn btn-success") %>　　　<%= link_to "削除する", admin_category_path(@category, id: category), method: :delete, class: 'btn btn-danger', data: {confirm: "削除しますか？"}  %></td>
           </tr>
             <% end %>
         </tbody>

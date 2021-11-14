@@ -15,8 +15,8 @@
         <p>タイトル　　　　　　　<strong><%= @post.title %></strong></p>
         <p>カテゴリー　　　　　　<strong><%= @post.category.name %></strong></p>
         <p><strong><%=safe_join(@post.body.split("\n"),tag(:br))%></strong></p>
-        <p>投稿者画像　　　　　　<%= attachment_image_tag @post.user, :image, :fill, 100, 100, fallback: "no_image.jpg" %></p>
-        <p>投稿者名　　　　　　　<strong><%= @post.user.handle_name %></strong></p>
+        <p>投稿者画像　　　　　　<%= link_to (attachment_image_tag @post.user, :image, :fill, 100, 100, fallback: "no_image.jpg"), admin_user_path(@post.user) %></p>
+        <p>投稿者名　　　　　　　<strong><%= link_to @post.user.handle_name, admin_user_path(@post.user) %></strong></p>
         <p>投稿日時　　　　　　　<%= @post.created_at.strftime('%Y/%m/%d %H:%M') %></p>
         <p>コメント件数：<strong><%= @post.post_comments.count %></strong></p>
         <p>いいね数:<strong><%= @post.favorites.count %></strong></p>

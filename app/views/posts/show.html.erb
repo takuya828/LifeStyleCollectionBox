@@ -22,7 +22,7 @@
 　　　<%= render "favorites/favorites", post: @post %>
 　　</div>
   <p>投稿日時　　<%= @post.created_at.strftime('%Y/%m/%d') %></p>
-  <p>投稿者<%= attachment_image_tag @post.user, :image, :fill, 50, 50, fallback: "no_image.jpg" %><%= @post.user.handle_name %></p>
+  <p>投稿者<%= link_to (attachment_image_tag @post.user, :image, :fill, 50, 50, fallback: "no_image.jpg"), user_path(@post.user) %><%= link_to @post.user.handle_name, user_path(@post.user) %></p>
 <div>
   </div>
   <br>
