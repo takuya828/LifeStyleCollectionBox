@@ -31,8 +31,8 @@
 <h3 class="text-success"><strong><%= flash[:success3] %></strong></h3>
 <br><p>コメント件数：<strong><%= @post.post_comments.count %></strong></p>
 <% @post.post_comments.each do |post_comment| %>
-<%= post_comment.comment %>　　<%= attachment_image_tag post_comment.user, :image, :fill, 50, 50, fallback: "no_image.jpg" %>
-     <%= post_comment.user.handle_name %>　<%= post_comment.created_at.strftime('%Y/%m/%d %H:%M') %><br>
+<%= post_comment.comment %>　　<%= link_to (attachment_image_tag post_comment.user, :image, :fill, 50, 50, fallback: "no_image.jpg"), user_path(post_comment.user) %>
+     <%= link_to post_comment.user.handle_name, user_path(post_comment.user) %>　<%= post_comment.created_at.strftime('%Y/%m/%d %H:%M') %><br>
   <% if post_comment.user == current_user %>
   <div>
     <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete %>
