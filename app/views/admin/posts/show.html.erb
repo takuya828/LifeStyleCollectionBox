@@ -21,13 +21,13 @@
         <p>コメント件数：<strong><%= @post.post_comments.count %></strong></p>
         <p>いいね数:<strong><%= @post.favorites.count %></strong></p>
         <% @post.post_comments.each do |post_comment| %>
-       <p><%= post_comment.created_at.strftime('%Y/%m/%d %H:%M') %>
-     <%= attachment_image_tag post_comment.user, :image, :fill, 30, 30, fallback: "no_image.jpg" %><%= post_comment.created_at.strftime('%Y/%m/%d %H:%M') %>
-     <%= post_comment.user.handle_name %></p>
+       <p>
+     <%= link_to (attachment_image_tag post_comment.user, :image, :fill, 30, 30, fallback: "no_image.jpg"), admin_user_path(post_comment.user) %><%= post_comment.created_at.strftime('%Y/%m/%d %H:%M') %>
+     <%= link_to post_comment.user.handle_name, admin_user_path(post_comment.user) %></p>
   <%= post_comment.comment %>
   <div>
     <%= link_to "削除", admin_post_post_comment_path(post_comment.post, post_comment), method: :delete %>
-  </div>
+  </div><br>
   <% end %>
       </div>
     </div>
