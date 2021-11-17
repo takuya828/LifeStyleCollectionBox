@@ -81,6 +81,7 @@ gem 'kaminari', '~> 1.2.1'
 
 group :development, :test do
   gem 'rubocop-airbnb'
+  gem 'pry-rails'
 end
 
 group :production do
