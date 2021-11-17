@@ -33,13 +33,13 @@
           <% end %>
           <% if post.favorites.count != last_favorite %>
             <% j = i %>
-            第<%= j %>位
-            <td><h3><strong><%= post.favorites.count %></strong></h3></td>
+            <font size="6">第<%= j %>位</font>
+            <td><font size="6"><strong><%= post.favorites.count %></strong></font></td>
             <% last_favorite = post.favorites.count %>
           <% else %>
             <% last_favorite = post.favorites.count %>
-            第<%= j %>位
-            <td><h3><strong><%= post.favorites.count %></strong></h3></td>
+            <font size="6">第<%= j %>位</font>
+            <td><font size="6"><strong><%= post.favorites.count %></strong></font></td>
           <% end %>
         </th>
          <td><%= link_to (attachment_image_tag post, :image, :fill, 110, 110, fallback: "no_image_logo.png"), post_path(post) %></td>
