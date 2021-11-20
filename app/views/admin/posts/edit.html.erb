@@ -7,7 +7,7 @@
     <div class="mx-5">
 
 <%= form_with model:@post, url: admin_post_path, local: true do |f| %>
-<p>投稿画像　　<%= attachment_image_tag(@post, :image, :fill, 200, 200, format: 'jpeg', fallback: "no_image.jpg") %>　　　　　<%= f.attachment_field :image %></p>
+<p>投稿画像　　<%= attachment_image_tag(@post, :image, :fill, 200, 200, format: 'jpeg', fallback: "no_image_logo.png") %>　　　　　<%= f.attachment_field :image %></p>
 <p><%= f.label :カテゴリー %>　　　　　<%= f.collection_select :category_id, Category.all, :id, :name, :prompt => "--選択してください--" %></p>
 <p>タイトル　　　　　　<%= f.text_field :title, size: "40" %></p>
 <p>本文　　　　　　　　<%= f.text_area :body, size: "40" %></p>

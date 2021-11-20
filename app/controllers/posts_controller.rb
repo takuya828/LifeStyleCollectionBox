@@ -13,7 +13,7 @@ class PostsController < ApplicationController
       flash[:success] = "投稿完了致しました。"
       redirect_to user_path(@user)
     else
-      flash[:danger] = "ジャンル選択、タイトルまたは内容が空白です。"
+      flash[:danger] = "カテゴリー選択、タイトルまたは内容が空白です。"
       render :new
     end
   end

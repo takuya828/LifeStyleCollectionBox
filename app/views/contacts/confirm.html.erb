@@ -16,7 +16,7 @@
       <td><%= @contact.email %></td>
     </tr>
     <tr>
-      <td>メッセージ</td>
+      <td>問い合わせ内容</td>
       <td><%=safe_join(@contact.message.split("\n"),tag(:br))%></td>
     </tr>
   </tbody>
