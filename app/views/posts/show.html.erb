@@ -1,50 +1,50 @@
 <main>
   <div class="container">
     <div class="mt-3">
-<h3>投稿詳細ページ
-<% if @user.id == current_user.id %>
-<%= link_to("編集", edit_post_path(@post.id), class: "btn btn-success") %>
-<% end %></h3>
-<h3 class="text-success"><strong><%= flash[:success] %></strong></h3>
-</div>
- <div class="row">
- <div class="mt-5 mx-3">
- <div class="col">
- <%= attachment_image_tag @post, :image, :fill, 300, 250, format: 'jpeg', fallback: "no_image_logo.png" %>
- </div>
- </div>
-  <div class="mt-5">
-  <div class="col">
-  <p>カテゴリー　 <strong><%= @post.category.name %></strong></p>
-  <p>タイトル　　<strong><%= @post.title %></strong></p><br>
-  <font size="4"><p><%=safe_join(@post.body.split("\n"),tag(:br))%></p></font><br>
-  <div id="favorite_buttons_<%= @post.id %>">
-　　　<%= render "favorites/favorites", post: @post %>
-　　</div><br>
-  <p>投稿日時　　<%= @post.created_at.strftime('%Y/%m/%d') %></p>
-  <p>投稿者：<%= link_to (attachment_image_tag @post.user, :image, :fill, 50, 50, fallback: "no_image.jpg"), user_path(@post.user) %> <%= link_to @post.user.handle_name, user_path(@post.user) %></p>
-<div>
-  </div>
+      <h3>投稿詳細ページ
+      <% if @user.id == current_user.id %>
+      <%= link_to("編集", edit_post_path(@post.id), class: "btn btn-success") %>
+      <% end %></h3>
+      <h3 class="text-success"><strong><%= flash[:success] %></strong></h3>
+    </div>
+   <div class="row">
+   <div class="mt-5 mx-3">
+   <div class="col">
+   <%= attachment_image_tag @post, :image, :fill, 300, 250, format: 'jpeg', fallback: "no_image_logo.png" %>
+   </div>
+    </div>
+    <div class="mt-5">
+    <div class="col">
+      <p>カテゴリー　 <strong><%= @post.category.name %></strong></p>
+      <p>タイトル　　<strong><%= @post.title %></strong></p><br>
+      <font size="4"><p><%=safe_join(@post.body.split("\n"),tag(:br))%></p></font><br>
+      <div id="favorite_buttons_<%= @post.id %>">
+　　  　<%= render "favorites/favorites", post: @post %>
+　　  </div><br>
+    <p>投稿日時　　<%= @post.created_at.strftime('%Y/%m/%d') %></p>
+    <p>投稿者：<%= link_to (attachment_image_tag @post.user, :image, :fill, 50, 50, fallback: "no_image.jpg"), user_path(@post.user) %> <%= link_to @post.user.handle_name, user_path(@post.user) %></p>
+    <div>
+    </div>
   <br>
-<h4><strong>-コメント-</strong></h4>
-<h3 class="text-danger"><strong><%= flash[:danger] %></strong></h3>
-<h3 class="text-success"><strong><%= flash[:success3] %></strong></h3>
-<br><p>コメント件数：<strong><%= @post.post_comments.count %></strong></p>
-<% @post.post_comments.each do |post_comment| %>
-<%= post_comment.comment %>　　<%= link_to (attachment_image_tag post_comment.user, :image, :fill, 50, 50, fallback: "no_image.jpg"), user_path(post_comment.user) %>
+    <h4><strong>-コメント-</strong></h4>
+    <h3 class="text-danger"><strong><%= flash[:danger] %></strong></h3>
+    <h3 class="text-success"><strong><%= flash[:success3] %></strong></h3>
+    <br><p>コメント件数：<strong><%= @post.post_comments.count %></strong></p>
+    <% @post.post_comments.each do |post_comment| %>
+    <%= post_comment.comment %>　　<%= link_to (attachment_image_tag post_comment.user, :image, :fill, 50, 50, fallback: "no_image.jpg"), user_path(post_comment.user) %>
      <%= link_to post_comment.user.handle_name, user_path(post_comment.user) %>　<%= post_comment.created_at.strftime('%Y/%m/%d %H:%M') %><br>
-  <% if post_comment.user == current_user %>
-  <div>
+      <% if post_comment.user == current_user %>
+    <div>
     <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete %>
+    </div>
+      <% end %>
+     <% end %>
+   </div><br>
+    <%= form_with(model:[@post, @post_comment], local: true) do |f| %>
+    <%= f.text_area :comment, rows:'5',placeholder: "コメント入力" %>
+    <%= f.submit "送信する" %>
+    <% end %>
+      </div>
+    </div>
   </div>
-  <% end %>
- <% end %>
- </div><br>
-<%= form_with(model:[@post, @post_comment], local: true) do |f| %>
-  <%= f.text_area :comment, rows:'5',placeholder: "コメント入力" %>
-  <%= f.submit "送信する" %>
-<% end %>
-</div>
-</div>
-</div>
 </main>

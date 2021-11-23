@@ -4,14 +4,19 @@
       <div class="col">
         <div class="mt-3">
 
-<h2>-新規投稿-</h2>
-<div class="py-2">
-<p class="text-danger"><strong><%= flash[:danger] %></strong></p>
+        <h2>-新規投稿-</h2>
+          <div class="py-2">
+          <p class="text-danger"><strong><%= flash[:danger] %></strong></p>
+          </div>
+　      <%= form_with model: @post, local:true do |f| %>
+　      <p><%= f.label :カテゴリー %>　　　　　<%= f.collection_select :category_id, Category.all, :id, :name, :prompt => "--選択してください--" %></p>
+        <p>画像　　　　　　　　<%= f.attachment_field :image %></p>
+        <p>タイトル　　　　　　<%= f.text_field :title, size: 40 %></p>
+        <p>内容　　　　　　　　<%= f.text_area :body, size: "50×10" %></p><br>
+        <%= f.submit '投稿', class: "btn btn-success btn-lg" %>
+      　<% end %>
+      　</div>
+      </div>
+    </div>
+  </div>
 </div>
-　<%= form_with model: @post, local:true do |f| %>
-　<p><%= f.label :カテゴリー %>　　　　　<%= f.collection_select :category_id, Category.all, :id, :name, :prompt => "--選択してください--" %></p>
-  <p>画像　　　　　　　　<%= f.attachment_field :image %></p>
-  <p>タイトル　　　　　　<%= f.text_field :title, size: 40 %></p>
-  <p>内容　　　　　　　　<%= f.text_area :body, size: "50×10" %></p><br>
-  <%= f.submit '投稿', class: "btn btn-success btn-lg" %>
-　<% end %>

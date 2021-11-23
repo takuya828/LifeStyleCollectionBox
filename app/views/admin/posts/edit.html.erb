@@ -2,21 +2,21 @@
   <div class="container">
     <div class="px-3 mt-3">
       <h4>投稿編集</h4>
-      <h3 class="text-danger"><strong><%= flash[:danger] %></strong></h3>
+        <h3 class="text-danger"><strong><%= flash[:danger] %></strong></h3>
     </div>
     <div class="mx-5">
 
-<%= form_with model:@post, url: admin_post_path, local: true do |f| %>
-<p>投稿画像　　<%= attachment_image_tag(@post, :image, :fill, 200, 200, format: 'jpeg', fallback: "no_image_logo.png") %>　　　　　<%= f.attachment_field :image %></p>
-<p><%= f.label :カテゴリー %>　　　　　<%= f.collection_select :category_id, Category.all, :id, :name, :prompt => "--選択してください--" %></p>
-<p>タイトル　　　　　　<%= f.text_field :title, size: "40" %></p>
-<p>本文　　　　　　　　<%= f.text_area :body, size: "40" %></p>
-<p>投稿日時　　　　　　<%= @post.created_at.strftime('%Y/%m/%d %H:%M') %></p>
-<p>コメント件数　　　　<strong><%= @post.post_comments.count %></strong></p>
-<p>いいね数　　　　　　<strong><%= @post.favorites.count %></strong></p>
-<%= f.submit '変更を保存', class: "btn btn-success" %><br><br>
-<%= link_to "削除する", admin_post_path(@post), method: :delete, class: 'btn btn-danger', data: {confirm: "削除しますか？"}  %>
-<% end %>
+    <%= form_with model:@post, url: admin_post_path, local: true do |f| %>
+    <p>投稿画像　　<%= attachment_image_tag(@post, :image, :fill, 200, 200, format: 'jpeg', fallback: "no_image_logo.png") %>　　　　　<%= f.attachment_field :image %></p>
+    <p><%= f.label :カテゴリー %>　　　　　<%= f.collection_select :category_id, Category.all, :id, :name, :prompt => "--選択してください--" %></p>
+    <p>タイトル　　　　　　<%= f.text_field :title, size: "40" %></p>
+    <p>本文　　　　　　　　<%= f.text_area :body, size: "40" %></p>
+    <p>投稿日時　　　　　　<%= @post.created_at.strftime('%Y/%m/%d %H:%M') %></p>
+    <p>コメント件数　　　　<strong><%= @post.post_comments.count %></strong></p>
+    <p>いいね数　　　　　　<strong><%= @post.favorites.count %></strong></p>
+    <%= f.submit '変更を保存', class: "btn btn-success" %><br><br>
+    <%= link_to "削除する", admin_post_path(@post), method: :delete, class: 'btn btn-danger', data: {confirm: "削除しますか？"}  %>
+    <% end %>
     </div>
   </div>
 </main>
