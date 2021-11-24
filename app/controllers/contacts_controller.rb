@@ -6,7 +6,7 @@ class ContactsController < ApplicationController
   def confirm
     @contact = Contact.new(contact_params)
     if @contact.invalid?
-      flash[:danger] = "名前、メールアドレスまたはメッセージ内容が空白です。"
+      flash[:danger] = "名前、メールアドレスまたは問い合わせ内容が空白です。"
       render :new
     end
   end
