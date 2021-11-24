@@ -1,0 +1,53 @@
+ja:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              taken: "既に使用されています。"
+              blank: "入力してください。"
+              too_short: "%{count}文字以上で入力してください。"
+              too_long: "%{count}文字以下で入力してください。"
+              invalid: "形式が正しくありません。"
+            password:
+              blank: "入力してください。"
+              too_short: "%{count}文字以上で入力してください。"
+              too_long: "%{count}文字以下で入力してください。"
+            password_confirmation:
+              confirmation: "%{attribute}と一致しません。"
+            current_password:
+              blank: "入力してください。"
+              invalid: "違います。"
+            handle_name:
+              taken: "既に使用されています。"
+              blank: "入力してください。"
+              too_short: "%{count}文字以上で入力してください。"
+              too_long: "%{count}文字以下で入力してください。"
+              invalid: "形式が正しくありません。"
+            password:
+              blank: "入力してください。"
+              too_short: "%{count}文字以上で入力してください。"
+              too_long: "%{count}文字以下で入力してください。"
+            password_confirmation:
+              confirmation: "%{attribute}と一致しません。"
+            current_password:
+              blank: "入力してください。"
+              invalid: "違います。"
+        admin:
+          attributes:
+            email:
+              taken: "既に使用されています。"
+              blank: "入力してください。"
+              too_short: "%{count}文字以上で入力してください。"
+              too_long: "%{count}文字以下で入力してください。"
+              invalid: "形式が正しくありません。"
+            password:
+              blank: "入力してください。"
+              too_short: "%{count}文字以上で入力してください。"
+              too_long: "%{count}文字以下で入力してください。"
+            password_confirmation:
+              confirmation: "%{attribute}と一致しません。"
+            current_password:
+              blank: "入力してください。"
+              invalid: "違います。"

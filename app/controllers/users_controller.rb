@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       flash[:success] = "変更完了致しました。"
       redirect_to user_path(@user.id)
     else
-      flash[:danger] = "ハンドルネーム もしくはメールアドレスが空白です。"
+      flash[:danger] = "そのハンドルネームは既に利用されてます。もしくは ハンドルネーム、メールアドレスが空白です。"
       redirect_to edit_user_path(@user.id)
     end
   end
