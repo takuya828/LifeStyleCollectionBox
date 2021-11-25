@@ -1,6 +1,6 @@
 # アプリ名　Life Style Collection Box
 
-## ロゴ
+# ロゴ
 ![logo](https://user-images.githubusercontent.com/88130026/143454823-2f32ca31-87d2-435c-8fc2-aa1a795b9a2f.jpg)
 
 ## サイト概要
