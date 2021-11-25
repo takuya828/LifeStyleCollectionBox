@@ -1,5 +1,8 @@
 # アプリ名　Life Style Collection Box
 
+## ロゴ
+![logo](https://user-images.githubusercontent.com/88130026/143454823-2f32ca31-87d2-435c-8fc2-aa1a795b9a2f.jpg)
+
 ## サイト概要
 日常生活におけるお役立ち情報を共有し合います。
 6つのジャンル（料理、掃除、洗濯、整理、買物、その他)に分け役に立った物、商品を出し合います。
