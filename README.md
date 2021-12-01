@@ -1,5 +1,14 @@
 # アプリ名　Life Style Collection Box
 
+## URL
+http://lifestylecollectionbox.com/
+
+## ロゴ
+![logo](https://user-images.githubusercontent.com/88130026/143454823-2f32ca31-87d2-435c-8fc2-aa1a795b9a2f.jpg)
+
+## 説明動画
+https://user-images.githubusercontent.com/88130026/144202889-3e2692d2-42ff-4593-a87f-d3db796fefda.mp4
+
 ## サイト概要
 日常生活におけるお役立ち情報を共有し合います。
 6つのジャンル（料理、掃除、洗濯、整理、買物、その他)に分け役に立った物、商品を出し合います。
@@ -25,7 +34,6 @@
 
 
 ### アプリケーションの詳細
-
 会員はためになった、役に立った情報を投稿できます。<br>
 「いいね」することもでき、自分が「いいね」した投稿の一覧も見ることが可能です。<br>
 ランキングページにて、いいね数に応じた順位を見ることができます。<br>
@@ -33,6 +41,14 @@
 管理者は会員ステータスの変更、投稿やコメントの削除ができます。<br>
 カテゴリーの追加や名前の変更も可能です。
 
+### 実装した機能
+いいね非同期通信  
+検索（タイトル検索、カテゴリー指定）  
+ユーザー認証  
+画像投稿  
+問い合わせ  
+コメント  
+ランキング  
 
 ## 設計書
 ER図 https://drive.google.com/file/d/1H7v-MXysOIX9Ae1g44zKZaT4gr9nxZZh/view?usp=sharing<br>
