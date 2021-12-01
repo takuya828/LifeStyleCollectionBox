@@ -39,12 +39,10 @@
     </div>
       <% end %>
      <% end %>
-   </div><br>
+   </div></div></div><br>
     <%= form_with(model:[@post, @post_comment], local: true) do |f| %>
-    <%= f.text_area :comment, rows:'5',placeholder: "コメント入力" %>
+    <%= f.text_area :comment, class: 'form-control', size: "50x10", placeholder: "コメント入力" %>
     <%= f.submit "送信する" %>
     <% end %>
-      </div>
-    </div>
   </div>
 </main>

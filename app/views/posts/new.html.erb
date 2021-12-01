@@ -11,8 +11,8 @@
 　      <%= form_with model: @post, local:true do |f| %>
 　      <p><%= f.label :カテゴリー %>　　　　　<%= f.collection_select :category_id, Category.all, :id, :name, :prompt => "--選択してください--" %></p>
         <p>画像　　　　　　　　<%= f.attachment_field :image %></p>
-        <p>タイトル　　　　　　<%= f.text_field :title, size: 40 %></p>
-        <p>内容　　　　　　　　<%= f.text_area :body, size: "50×10" %></p><br>
+        <p>タイトル　　　　　　<%= f.text_field :title, class: 'form-control', size: 40 %></p>
+        <p>内容　　　　　　<%= f.text_area :body, class: 'form-control', rows: "15" %></p><br>
         <%= f.submit '投稿', class: "btn btn-success btn-lg" %>
       　<% end %>
       　</div>
