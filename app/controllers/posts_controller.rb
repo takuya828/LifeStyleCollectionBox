@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
+  before_action :baria_user, only: [:edit, :destroy, :update]
 
   def new
     @post = Post.new
@@ -75,4 +76,11 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :image, :body, :category_id)
   end
+
+  def baria_user
+    unless Post.find(params[:id]).user.id.to_i == current_user.id
+      redirect_to posts_path
+    end
+  end
+
 end
