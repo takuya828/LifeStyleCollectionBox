@@ -10,107 +10,9 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
- <header>
-   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-        <ul class="navbar-nav my-3 mr-auto">
-          <li>
-            <div class="mx-1">
-         <%= link_to (image_tag asset_path('logo.jpg', :size =>'100x100')), root_path %>
-            </div>
-            </li>
-            </ul>
-  <body>
-      <% if admin_signed_in? %>
-      <ul class="navbar-nav">
-            <li>
-            <div class="mx-3">
-             <%= link_to "会員一覧", admin_users_path, class: "btn btn-outline-info" %>
-            </div>
-            </li>
-            <li>
-            <div class="mx-3">
-             <%= link_to "カテゴリー一覧", admin_categories_path , class: "btn btn-outline-info" %>
-            </div>
-            </li>
-            <li>
-            <div class="mx-3">
-             <%= link_to "投稿一覧", admin_posts_path, class: "btn btn-outline-info" %>
-            </div>
-            </li>
-            <li>
-            <div class="mx-3">
-                 <%= link_to("管理者ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-warning") %>
-            </div>
-            </li>
-            </ul>
-      <% elsif user_signed_in? %>
-      <ul class="navbar-nav">
-       <li>
-            <div class="mx-3">
-             <%= link_to "使い方", about_path, class: "btn btn-primary" %>
-            </div>
-            </li>
-            <li>
-            <div class="mx-3">
-             <%= link_to "マイページ", user_path(current_user), class: "btn btn-primary" %>
-            </div>
-            </li>
-            <li>
-            <div class="mx-3">
-            <%= link_to "CollectionBox", posts_path, class: "btn btn-success" %>
-            </div>
-            </li>
-            <li>
-            <div class="mx-3">
-             <%= link_to "いいねランキング", ranking_posts_path, class: "btn btn-success" %>
-            </div>
-            </li>
-            <li>
-            <div class="mx-3">
-             <%= link_to "新規投稿", new_post_path, class: "btn btn-success" %>
-            </div>
-            </li>
-            <li>
-            <div class="mx-3">
-             <%= link_to "問い合わせ", new_contact_path, class: "btn btn-info" %>
-            </div>
-            </li>
-          <li>
-        <div class="mx-3">
-         <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-secondary" %>
-            </div>
-            </li>
-    <% else %>
-    <ul class="navbar-nav">
-          <li>
-            <div class="mx-3">
-             <%= link_to "使い方", about_path, class: "btn btn-outline-primary" %>
-            </div>
-            </li>
-          <li>
-           <div class="mx-3">
-            <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-success" %>
-           </div>
-          </li>
-          <li>
-           <div class="mx-3">
-            <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-primary" %>
-           </div>
-         </li>
-         <li>
-            <div class="mx-3">
-             <%= link_to "問い合わせ", new_contact_path, class: "btn btn-outline-info" %>
-            </div>
-            </li>
-        </ul>
-    <% end %>
 
-    </div>
-    </nav>
-    </header>
-    <%= yield %>
-  </body>
+  <body>
+<%= render 'layouts/application' %>
 
   <footer>
    <div class="my-5">
@@ -119,4 +21,5 @@
          </div>
          </div>
       </footer>
+  </body>
 </html>

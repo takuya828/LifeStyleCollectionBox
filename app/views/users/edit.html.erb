@@ -10,7 +10,7 @@
           <p>プロフィール画像<%= attachment_image_tag @user, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>　　　　<%= f.attachment_field :image %></p>
           <p>ハンドルネーム　　　　　　　　　　<%= f.text_field :handle_name %></p>
           <p>メールアドレス　　　　　　　　　　<%= f.text_field :email %></p>
-          <%= f.submit '保存する', class:"btn btn-success" %>　　　　<%= link_to '退会する', users_check_path, class:"btn btn-danger" %>
+          <%= f.submit '保存する', class:"btn btn-success" %>　　　　<%= link_to '退会する', check_users_path, class:"btn btn-danger" %>
 
           <% end %>
           </div>

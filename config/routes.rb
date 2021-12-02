@@ -11,8 +11,6 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
   }
 
-  get '/users/check', to: 'users#check'
-  patch '/users/:id/quit' => 'users#quit', as: 'quit'
   get '/' => 'homes#top', as: 'root'
   get '/about' => 'homes#about', as: 'about'
 
@@ -32,7 +30,11 @@ Rails.application.routes.draw do
   end
 
   resources :users do
+    collection do
+      get :check
+    end
     member do
+      patch :quit
       get :favorites
     end
   end
