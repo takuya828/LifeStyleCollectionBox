@@ -27,7 +27,7 @@ class PostsController < ApplicationController
 
   def ranking
     @q = Post.ransack(params[:q])
-    @posts = Post.limit(20).includes(:favorited_users).sort { |a, b| b.favorited_users.size <=> a.favorited_users.size }
+    @posts = Post.left_joins(:favorites).group(:id).order(Arel.sql('count(favorites.post_id) desc'))
   end
 
   def search
@@ -38,7 +38,7 @@ class PostsController < ApplicationController
 
   def rank
     @q = Post.ransack(params[:q])
-    @posts = @q.result(distinct: true).limit(20).includes(:favorited_users).sort { |a, b| b.favorited_users.size <=> a.favorited_users.size }
+    @posts = @q.result(distinct: true).left_joins(:favorites).group(:id).order(Arel.sql('count(favorites.post_id) desc'))
   end
 
   def show
